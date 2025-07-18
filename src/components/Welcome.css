@@ -1,0 +1,252 @@
+.welcome-page {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../Pictures/slm.jpg") no-repeat center center fixed;
+    background-size: cover;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    animation: backgroundMove 20s infinite alternate;
+}
+
+@keyframes backgroundMove {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+.welcome-page::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgb(0 0 0 / 40%);
+    backdrop-filter: blur(3px);
+}
+
+.welcome-page.loaded {
+    opacity: 1;
+}
+
+.welcome-logo {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    width: 120px;
+    height: 120px;
+    animation: pulse 2s infinite;
+    filter: drop-shadow(0 4px 8px rgb(0 0 0 / 10%));
+    z-index: 3;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.welcome-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 3.5rem;
+    background: rgb(255 255 255 / 98%);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgb(0 71 49 / 20%);
+    backdrop-filter: blur(10px);
+    width: 90%;
+    max-width: 500px;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideUp 0.8s ease-out forwards;
+    border: 1px solid rgb(0 71 49 / 10%);
+    margin-top: 2rem;
+}
+
+@keyframes slideUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.welcome-text-container {
+    margin-bottom: 2.5rem;
+}
+
+.welcome-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.welcome-title-main {
+    font-size: 3rem;
+    color: #004731;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgb(0 71 49 / 10%);
+    background: linear-gradient(135deg, #004731, #006B4F);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeInDown 0.8s ease-out forwards;
+}
+
+.welcome-title-sub {
+    font-size: 1.5rem;
+    color: #004731;
+    font-weight: 500;
+    letter-spacing: 1px;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.welcome-message {
+    font-size: 1.2rem;
+    color: #004731;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    line-height: 1.6;
+    animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    animation: fadeIn 1s ease-out forwards;
+    margin-top: 1rem;
+}
+
+.loading-text {
+    color: #004731;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.loading-bar {
+    width: 100%;
+    height: 4px;
+    background: rgb(0 71 49 / 10%);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 1px 2px rgb(0 71 49 / 10%);
+}
+
+.loading-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #004731, #006B4F);
+    border-radius: 2px;
+    transition: width 0.5s ease-out;
+    box-shadow: 0 0 10px rgb(0 71 49 / 20%);
+}
+
+/* Responsive Design */
+@media screen and (width <= 768px) {
+    .welcome-logo {
+        width: 80px;
+        height: 80px;
+        top: 1.5rem;
+        left: 1.5rem;
+    }
+
+    .welcome-content {
+        padding: 2.5rem;
+        width: 85%;
+    }
+
+    .welcome-title-main {
+        font-size: 2.5rem;
+    }
+
+    .welcome-title-sub {
+        font-size: 1.2rem;
+    }
+
+    .welcome-message {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (width <= 480px) {
+    .welcome-logo {
+        width: 60px;
+        height: 60px;
+        top: 1rem;
+        left: 1rem;
+    }
+
+    .welcome-content {
+        padding: 2rem;
+        width: 90%;
+    }
+
+    .welcome-title-main {
+        font-size: 2rem;
+    }
+
+    .welcome-title-sub {
+        font-size: 1rem;
+    }
+
+    .welcome-message {
+        font-size: 0.9rem;
+    }
+} 
